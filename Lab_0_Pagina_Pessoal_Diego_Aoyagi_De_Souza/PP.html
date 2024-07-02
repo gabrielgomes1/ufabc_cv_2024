@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>VC 2024.2 - Diego</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        @font-face {
+            font-family: 'Poppins-Bold';
+            src: url('font/Poppins-Bold.woff2') format('woff2');
+        }
+        
+        @font-face {
+            font-family: 'Poppins-Regular';
+            src: url('font/Poppins-Regular.woff2') format('woff2');
+        }
+        
+        @font-face {
+            font-family: 'Poppins-SemiBold';
+            src: url('font/Poppins-SemiBold.woff2') format('woff2');
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins-Regular', 'Poppins-SemiBold', 'Poppins-Bold', Arial;
+            padding: 0;
+            margin: 0;
+            padding-top: 90px;
+        }
+
+        /* Style the header */
+        header {
+            background-color: rgb(255, 253, 85);
+            height: 310px;
+            padding: 30px;
+            text-align: left;
+            color: black;
+            align-items: center;
+        }
+        
+        /* Style the header */
+        .header_2 {
+            background-color: #f1f1f1;
+            height: auto;
+            padding: 30px;
+            text-align: center;
+            color: black;
+        }
+
+        /* Create two columns/boxes that float next to each other */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+			align-items: center;
+            background: #f1f1f1;
+            padding: 20px 0;
+            z-index: 1000;
+        }
+		
+		.nav-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        /* Style the list inside the menu */
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+			margin-left: -100px;
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin: 0 15px; /* Espaçamento horizontal entre os itens */
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        article {
+            float: left;
+            text-align: center;
+            padding: 20px;
+            width: 60%;
+            height: 455px;
+            background-color: rgb(255, 253, 85);
+        }
+        
+        .avatar {
+            float: right;
+            text-align: center;
+            align-items: center;
+            padding: 20px;
+            width: 40%;
+            background-color: rgb(255, 253, 85);
+            border: 0px solid #f1f1f1;
+        }
+        
+        .avatar_img {
+            display: block;
+            margin: auto;
+            align-items: center;
+            text-align: center;
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Clear floats after the columns */
+        section::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Style the footer */
+        footer {
+            background-color: #777;
+            font-size: 12px;
+            padding: 1px;
+            text-align: center;
+            color: white;
+        }
+
+        /* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+        @media (max-width: 600px) {
+            nav, article {
+                width: 100%;
+                height: auto;
+            }
+        }
+        
+        .logo {
+            max-height:50px;
+			margin-left:20px;
+        }
+        
+        .foto {
+            float: right;
+            margin: 0 auto;
+        }
+        
+        audio {
+            color: rgb(255, 0, 0); /* Cor do texto nos controles de áudio */
+            padding: 10px; /* Espaçamento interno dos controles de áudio */
+            width: 300px; /* Largura dos controles de áudio */
+        }
+        
+        .font_name {
+            font-family: Brush Script MT;
+            font-size: 60px;
+        }
+        
+        .img-btn {
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .img-btn img {
+            width: 70px;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .img-btn img:hover {
+            transform: scale(1.1);
+        }
+    
+    </style>
+</head>
+<body>
+    <nav>
+		<img src="logotipo-ufabc-lateral.png" alt="Logo UFABC" class="logo">
+        <div class="nav-container">
+			<ul>
+				<li><a href="#Intro">Intro</a></li>
+				<li><a href="#Sobre_mim">Sobre mim</a></li>
+				<li><a href="#contatos">Contato</a></li>
+			</ul>
+		</div>
+    </nav>
+    
+    <header>
+        <div id="Intro" class="foto">
+            <img src="Design sem nome.png" alt="Eu" width=250px height=250px>
+        </div>
+        <h1>Olá, Eu sou</h1>
+        <div class="font_name">Diego Aoyagi</div>
+        <h3>Página Pessoal dedicada para o curso de Visão Computacional realizada na UFABC</h3>
+    </header>
+    
+    <div class="header_2">
+        <h3>Interesses em Visão Computacional</h3>
+        <p>Para todos os cantos do mundo temos algo relacionado com a visão computacional e a cada dia trabalhamos para que a tecnologia relacionada a ela evolua sempre mais.Para mim, quando falam em visão computacional, o que mais me chama atenção é o trabalho em RECONHECIMENTO FACIAL  e a REALIDADE AUMENTADA, além de, aplicada a indústria, a DETECÇÃO DE OBJETOS.</p>
+    </div>
+    
+    <section>
+        <article id="Sobre_mim">
+            <p>Um cara cristão que deseja se formar...</p>
+            <hr>
+            <h3>Curso</h3>
+            <p>Engenharia de Instrumentação, Automação e Robótica</p>
+            <h3>Idade</h3>
+            <p>27 anos</p>
+            <h3>Hobbies</h3>
+            <p>Futebol, amigos e comer</p>
+            <audio controls>
+                <source src="HINO DO SÃO PAULO.mp3" type="audio/mpeg">
+                Seu navegador não suporta o elemento de áudio.
+            </audio>
+        </article>
+        <div class="avatar">
+            <h3>MEU AVATAR</h3>
+            <img class="avatar_img" src="pngimg.com - panda_PNG21.png" alt="Avatar" width=250px height=250px>
+        </div>
+    </section>
+    
+    <div id="contatos" class="header_2">
+        <h3>E-mail</h3>
+        <p>diegoaoyagi@gmail.com</p>
+        <h3>Acesse</h3>
+        <a href="https://www.linkedin.com/in/diego-aoyagi" class="img-btn" target="_blank">
+            <img src="image_linkedin.jpeg" alt="LinkedIn">
+        </a>
+        <a href="https://www.instagram.com/diegoaoyagi/" class="img-btn" target="_blank">
+            <img src="image_instagram.jpg" alt="Instagram">
+        </a>
+    </div>
+
+    <footer>
+        <p>Universidade Federal do ABC</p>
+        <p>Santo André</p>
+        <p>2024</p>
+    </footer>
+</body>
+</html>
