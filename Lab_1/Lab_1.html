@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-<title>LAB 1</title>
+<title>LAB 01</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
@@ -249,6 +249,46 @@ figcaption {
 	  		<p><center> Foto de todos os integrantes.</center	></p>
 				<p><center><img src="todos.png" alt="Foto de todos os integrantes"></center></p>
 				
+        <pre class="code-box">
+          <code>
+              <h3>
+                import numpy as np
+                import cv2 as cv
+
+                cap = cv.VideoCapture(0)
+
+                if not cap.isOpened():
+                    print("Cannot open camera")
+                    exit()
+
+                while True:
+                    # Capture frame-by-frame
+                    ret, frame = cap.read()
+                    # if frame is read correctly ret is True
+                    if not ret:
+                        print("Can't receive frame (stream end?). Exiting ...")
+                        break
+
+                    # Display the resulting frame
+                    cv.imshow('frame', frame)
+
+                    if cv.waitKey(1) == ord('x'):
+                        # Salva o frame na foto1.png
+                        cv.imwrite('foto1.png',frame)
+                        break
+
+                    if cv.waitKey(1) == ord('q'):
+                        break
+
+                # When everything done, release the capture
+                cap.release()
+                cv.destroyAllWindows()
+              </h3>  
+          </code>
+        </pre>
+        <center><figcaption>Código python utilizado para gravação da foto com todos os integrantes</figcaption><p></center>
+
+
         <p><center> Foto de todos os avatares.</center	></p>
         <p><center><img src="avatar.png" alt="Foto de todos os avatares"></center></p>
 	  
@@ -260,6 +300,45 @@ figcaption {
         <p><center><video src="saida_3.mp4" width="600" controls autoplay loop></video>
         <video src="saida_4.mp4" width="600" controls autoplay loop></video></center></p>
         
+        <pre class="code-box">
+          <code>
+              <h3>
+                import numpy as np
+                import cv2 as cv
+                cap = cv.VideoCapture(0)
+
+                # Get current width of frame
+                width = cap.get(cv.CAP_PROP_FRAME_WIDTH)   # float
+                # Get current height of frame
+                height = cap.get(cv.CAP_PROP_FRAME_HEIGHT) # float
+                # Define Video Frame Rate in fps
+                fps = 30.0
+
+                # Define the codec and create VideoWriter object
+                fourcc = cv.VideoWriter_fourcc(*'XVID')
+                out = cv.VideoWriter('saida_4.avi', fourcc, fps, (int(width),int(height)) )
+
+                while cap.isOpened():
+                    ret, frame = cap.read()
+                    if not ret:
+                        print("Can't receive frame (stream end?). Exiting ...")
+                        break
+                    #frame = cv.flip(frame, 0)
+                    # write the flipped frame
+                    out.write(frame)
+                    cv.imshow('frame', frame)
+                    if cv.waitKey(1) == ord('q'):
+                        break
+
+                # Release everything if job is finished
+                cap.release()
+                out.release()
+                cv.destroyAllWindows()
+              </h3>  
+          </code>
+        </pre>
+        <center><figcaption>Código python utilizado para gravação dos videos</figcaption><p></center>
+
         <br>
         <h2><center>Referências</center></h2>
         <p><justify><center>
