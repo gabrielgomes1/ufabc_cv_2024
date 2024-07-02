@@ -54,6 +54,25 @@ footer {
   color: white;
 }
 
+.code-box {
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            padding: 0;
+            border-radius: 5px;
+            font-family: monospace;
+            white-space: pre;
+            width: 800px; 
+            margin: 0 auto; 
+            overflow-x: auto; 
+}
+
+figcaption {
+    font-size: 14px;
+    color: #555;
+    margin-top: 5px;
+}
+
+
 @media (max-width: 600px) {
   section {
     -webkit-flex-direction: column;
@@ -67,12 +86,12 @@ footer {
 <header>
     <h1>ESZA019-17SA - Visão Computacional</h1>
     <h3>Lab 01 - Captura de Imagem e Vídeo</h3>
-    <h4>Integrantes</h4>
-    <h5>Diego Aoyagi de Souza - RA: 11066516</h5>
-    <h5>Gabriel Gomes de Oliveira - RA: 11108214</h5>
-    <h5>Gustavo Cardoso Bezerra- RA: 11201822553</h5>
-    <h8>Data do Experimento: 25/06/2024 --</h8>
-    <h8>Data de publicação: 02/07/2024</h8>
+    <h5>Integrantes
+    <br>Diego Aoyagi de Souza - RA: 11066516
+    <br>Gabriel Gomes de Oliveira - RA: 11108214
+    <br>Gustavo Cardoso Bezerra- RA: 11201822553</h5>
+    <h6>Data do Experimento: 25/06/2024
+    <br>Data de publicação: 02/07/2024</h6>
 </header>
 
 <section>  
@@ -80,7 +99,8 @@ footer {
     <h2><center>Introdução</center></h2>
     <p><justify>A captura de imagens e vídeos é uma função essencial em diversas aplicações de processamento de imagens e visão computacional. Ela permite a aquisição de dados visuais em tempo real ou a partir de fontes armazenadas, facilitando análises, manipulações e processamentos subsequentes. No contexto do OpenCV, uma biblioteca popular para essas tarefas em Python, a captura é realizada através de interfaces simples e poderosas que permitem desde a obtenção de frames individuais até o processamento contínuo de fluxos de vídeo. Este processo não apenas viabiliza a aplicação de algoritmos de análise visual, mas também proporciona a base para a criação de sistemas interativos e automatizados que dependem de entrada visual em tempo real. 
       O experimento conduzido no laboratório visa familiarizar os participantes com os comandos fundamentais do OpenCV para visualização e gravação de imagens e vídeos. Para isso, organizamos grupos de três membros para executar as tarefas detalhadas no relatório fornecido. Utilizando programas em Python e imagens pré-existentes, além de capturas de novas imagens, adaptamos os códigos baseados em algumas referências tendo como principal a documentação oficial do OpenCV para resolver uma variedade de atividades propostas, incluindo a modificação de cores das imagens, captura de imagens e vídeos, e controle da velocidade de reprodução dos vídeos.</justify></p>
-    
+
+
     <br>
     <h2><center>Procedimentos experimentais</center></h2>
     <p><justify>Baixar os arquivos de referência para serem utilizados em aula, bem como as programações utilizadas e salvar numa pasta individual. Nessa mesma pasta, ativar o ambiente virtual criado anteriormente;
@@ -104,27 +124,116 @@ footer {
 
     <br>
 	  <h2><center>Parte 1</center></h2>
-	  		<p><center> A - Responda: por que a janela aberta não mostra a imagem colorida? 
+	  		<p><center> <b>Pergunta A - Responda:</b> por que a janela aberta não mostra a imagem colorida? 
 
-                    Resposta: O código abre a imagem em preto e branco porque na linha img = cv.imread('messi5.jpg',0), o parâmetro 0 indica que a imagem deve ser lida em escala de cinza.
+                    <br><b>Resposta:</b> O código abre a imagem em preto e branco porque na linha img = cv.imread('messi5.jpg',0), o parâmetro 0 indica que a imagem deve ser lida em escala de cinza.
           
                     A função cv.imread do OpenCV é utilizada para ler imagens de arquivos. Quando você passa o segundo argumento como 0 (zero), isso especifica que a imagem deve ser carregada em modo de escala de cinza. Isso significa que a imagem será convertida para uma representação em tons de cinza, onde cada pixel terá apenas um valor representando a intensidade luminosa, ao invés de três valores (para os canais de cor vermelho, verde e azul) como em uma imagem colorida.
         </center	></p>
 
-        <p><center> B - Altere: modifique o programa para que as imagens sejam exibidas mais rapidamente e depois para que sejam exibidas mais lentamente. Responda: qual a explicação de alteração de velocidade de exibição, e apresente suas soluçõe detalhadamente.
-                    Resposta: O controle da velocidade de exibição é definida na linha 15 do script, onde está definido     “time.sleep(1/25.0)”, desta forma, se queremos aumentar a velocidade, o denominador da fração deve ser maior que 25.0 e caso quisermos diminuir a velocidade, devemos diminuir o denominador para alterar o tempo de espera entre um frame e o outro
+        <p><center> <b>Pergunta B - Altere:</b> modifique o programa para que as imagens sejam exibidas mais rapidamente e depois para que sejam exibidas mais lentamente. Responda: qual a explicação de alteração de velocidade de exibição, e apresente suas soluçõe detalhadamente.
+                    <br><b>Resposta:</b> O controle da velocidade de exibição é definida na linha 15 do script, onde está definido     “time.sleep(1/25.0)”, desta forma, se queremos aumentar a velocidade, o denominador da fração deve ser maior que 25.0 e caso quisermos diminuir a velocidade, devemos diminuir o denominador para alterar o tempo de espera entre um frame e o outro
             
         </center	></p>
 
-        <p><center> C - Altere: modifique o programa para que uma imagem da câmera seja salva num arquivo “foto1.png” no momento em que for clicada a tecla ‘x’ no teclado. Apresente o resultado e sua solução detalhadamente.
-                    Resposta: Para salvar a imagem, utilizamos um if que aguarda o pressionamento da tecla x e caso seja pressionada, o frame é salvo no arquivo foto1.png e o programa é encerrado.
+        <p><center> <b>Pergunta C - Altere:</b> modifique o programa para que uma imagem da câmera seja salva num arquivo “foto1.png” no momento em que for clicada a tecla ‘x’ no teclado. Apresente o resultado e sua solução detalhadamente.
+                    <br><b>Resposta:</b> Para salvar a imagem, utilizamos um if que aguarda o pressionamento da tecla x e caso seja pressionada, o frame é salvo no arquivo foto1.png e o programa é encerrado.
           
         </center	></p>
 
-        <p><center> D - Altere: modifique o programa para que as imagens gravadas estejam “normais” no arquivo de video salvo, e apresentem uma velocidade de exibição adequada. Apresente o resultado e sua solução detalhadamente.
-                    Resposta: Para exibir a imagem normal, retiramos a linha que realizava o flip da imagem, dessa forma a imagem é exibida na forma original e além disso realizamos a alteração da variável “fps” para 30.0, dessa forma o vídeo iŕa exibir 30 frames por segundo.
+      
+        <pre class="code-box">
+          <code>
+              <h3>
+                import numpy as np
+                import cv2 as cv
+                
+                
+                cap = cv.VideoCapture(0)
+                
+                
+                if not cap.isOpened():
+                   print("Cannot open camera")
+                   exit()
+                  
+                while True:
+                   # Capture frame-by-frame
+                   ret, frame = cap.read()
+                   # if frame is read correctly ret is True
+                   if not ret:
+                       print("Can't receive frame (stream end?). Exiting ...")
+                       break
+                  
+                   # Display the resulting frame
+                   cv.imshow('frame', frame)
+                  
+                   if cv.waitKey(1) == ord('x'):
+                       # Salva o frame na foto1.png
+                       cv.imwrite('foto1.png',frame)
+                       break
+                      
+                   if cv.waitKey(1) == ord('q'):
+                       break
+                
+                
+                # When everything done, release the capture
+                cap.release()
+                cv.destroyAllWindows()
+                </h3>  
+          </code>
+        </pre>
+      <center><figcaption>Código python utilizado na resolução da questão C</figcaption><p></center>
+        
+      
+
+        <p><center> <b>Pergunta D - Altere:</b> modifique o programa para que as imagens gravadas estejam “normais” no arquivo de video salvo, e apresentem uma velocidade de exibição adequada. Apresente o resultado e sua solução detalhadamente.
+                    <br><b>Resposta:</b> Para exibir a imagem normal, retiramos a linha que realizava o flip da imagem, dessa forma a imagem é exibida na forma original e além disso realizamos a alteração da variável “fps” para 30.0, dessa forma o vídeo iŕa exibir 30 frames por segundo.
           
         </center	></p>
+
+        <pre class="code-box">
+          <code>
+              <h3>
+                import numpy as np
+                import cv2 as cv
+                cap = cv.VideoCapture(0)
+
+
+                # Get current width of frame
+                width = cap.get(cv.CAP_PROP_FRAME_WIDTH)   # float
+                # Get current height of frame
+                height = cap.get(cv.CAP_PROP_FRAME_HEIGHT) # float
+                # Define Video Frame Rate in fps
+                fps = 30.0
+
+
+                # Define the codec and create VideoWriter object
+                fourcc = cv.VideoWriter_fourcc(*'XVID')
+                out = cv.VideoWriter('saida.avi', fourcc, fps, (int(width),int(height)) )
+
+
+                while cap.isOpened():
+                   ret, frame = cap.read()
+                   if not ret:
+                       print("Can't receive frame (stream end?). Exiting ...")
+                       break
+                   #frame = cv.flip(frame, 0)
+                   # write the flipped frame
+                   out.write(frame)
+                   cv.imshow('frame', frame)
+                   if cv.waitKey(1) == ord('q'):
+                       break
+
+
+                # Release everything if job is finished
+                cap.release()
+                out.release()
+                cv.destroyAllWindows()
+
+                </h3>  
+          </code>
+        </pre>
+        <center><figcaption>Código python utilizado na resolução da questão D</figcaption><p></center>
 				
 	      <h2><center>Parte 2</center></h2>
 	  		<p><center> Foto de todos os integrantes.</center	></p>
