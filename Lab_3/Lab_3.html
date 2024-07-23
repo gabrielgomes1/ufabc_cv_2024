@@ -113,18 +113,48 @@ th {
   <article> <!-- Texto central que indica a introdução do laboratório em questão-->
     <h2><center>Introdução</center></h2>
     <p><justify>
-        
-
+      Este relatório aborda a geometria epipolar e visão estéreo, explorando como essas técnicas permitem que computadores percebam profundidade em imagens. A visão estéreo, similar à nossa percepção de profundidade com ambos os olhos, utiliza a geometria epipolar para calcular a profundidade de pontos em um ambiente 3D. Isso é feito através da triangulação de pontos correspondentes em duas imagens capturadas por câmeras estéreo. Como será apresentado a seguir, com a OpenCV, implementamos essas técnicas para criar estudar e criar videos com profundidade, simulando o funcionamento de videos 3D.
     </justify></p>
 
 
     <br>
     <h2><center>Procedimentos experimentais</center></h2>
     <p><justify>
-        
+        Com base no artigo fornecido, foi utilizado os materiais a seguir:
 
+        <br>
+        <br>
+        <b>Materiais</b>
+        <ul>
+            <li>Dois webcams</li>
+            <li>Suporte de papelão para fixação das webcams</li>
+            <li>Fita adesiva para fixar as webcams no suporte de papelão</li>
+            <li>Computador com OpenCV instalado</li>
+            <li>Padrão de calibração (tabuleiro de xadrez)</li>
+        </ul>
 
+        <br>
+        <b>Montagem do Sistema</b>
+        <ul>
+          <li>Configuração das Câmeras: Foi realizado a montagem das webcams no suporte rígido, fixando firmemente e alinhando-as horizontalmente.</li>
+        </ul>
+
+        <br>
+        <b>Calibração</b>
+        <ul>
+          <li>Captura de Imagens para Calibração: Foi realizada a captura de múltiplas imagens de um padrão de calibração com ambas as câmeras.</li>
+          <li>Processamento de Calibração: Com o auxilio do OpenCV, foi calibrado cada câmera individualmente e, em seguida, realizado a calibração estéreo para determinar a posição relativa entre as câmeras.</li>
+        </ul>
+
+        <br>
+        <b>Captura e Processamento de Imagens</b>
+        <ul>
+          <li>Captura de Imagens Estéreo: Com as webcams calibradas, foi capturado pares de imagens estéreo do ambiente.</li>
+          <li>Retificação das Imagens: Com o script python fornecido, foi aplicado a retificação das imagens para alinhar os pares de imagens, corrigindo possíveis distorções.</li>
+        </ul>
     </justify></p>
+
+
 
     <br>
     <h2><center>Análise e discussão dos estudos realizados</center></h2>
@@ -138,7 +168,7 @@ th {
     <h2><center>Conclusão</center></h2>
     <p><justify>
       
-      
+
     </justify></p>
 
     <br>
