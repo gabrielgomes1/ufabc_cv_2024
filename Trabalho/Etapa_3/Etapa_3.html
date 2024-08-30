@@ -97,27 +97,33 @@ figcaption {
   <article> <!-- Texto central que indica a introdução do laboratório em questão-->
     <h2><center>Introdução</center></h2>
     <p><justify>
-        
+        O presente trabalho tem como objetivo desenvolver um sistema de contagem de pessoas utilizando técnicas de Visão Computacional, mais especificamente o modelo YOLOv8 e a biblioteca OpenCV. O foco do projeto é criar um sistema que possa ser utilizado em vídeos gravados ou em tempo real, via webcam, para identificar e contar o número de pessoas em ambientes diversos. Esta aplicação pode ser adaptada para monitoramento de fluxo de pessoas em lojas, eventos ou áreas públicas.
     </justify></p>
-
 
     <br>
     <h2><center>Visão Geral do Sistema</center></h2>
       <p><justify>
-          
+        O sistema proposto é dividido em três etapas principais: 
+        <ul>
+          <li><b>Aquisição de Imagens:</b> As imagens serão capturadas em tempo real utilizando uma webcam ou extraídas de vídeos preexistentes. A webcam fornecerá um fluxo contínuo de imagens, enquanto que os vídeos serão processados quadro a quadro.</li>
+          <li><b>Processamento e Detecção:</b> A detecção de pessoas será realizada utilizando o modelo YOLOv8, um dos mais avançados em detecção de objetos. O YOLOv8 é treinado para reconhecer diversas classes de objetos, mas neste projeto será configurado para focar na classe de "pessoas". A integração com a biblioteca OpenCV permitirá a manipulação das imagens, bem como a aplicação de filtros e a identificação dos limites das detecções.</li>
+          <li><b>Contagem e Análise:</b> Após a detecção, o sistema contará quantas pessoas foram identificadas em cada frame ou quadro de vídeo. O resultado final será exibido na tela, juntamente com as marcações visuais das pessoas detectadas. Também será possível gerar estatísticas, como o número total de pessoas detectadas ao longo do vídeo ou durante um período específico de tempo.</li>
+        </ul>
       </justify></p>
     <br>
 	  <h2><center>Diagramas Funcionais</center></h2>
       <p><justify>
-        
-
+        Os diagramas funcionais do sistema demonstram o fluxo de dados desde a aquisição de imagens até a saída dos resultados. O diagrama abaixo exemplifica a sequência de operações:
+        <ul>
+          <li>Captura de Imagem → Pré-processamento → YOLOv8 (Detecção) → Pós-processamento → Contagem → Exibição do Resultado</li>
+        </ul>
+        Este fluxo de dados ilustra como cada imagem ou quadro de vídeo é processado pelo sistema, culminando na contagem precisa das pessoas presentes.
       </justify></p>
     <br>
     <h2><center>Considerações Finais</center></h2>
       <p><justify>
-        
-
-      </justify></p
+        O sistema desenvolvido demonstra a aplicabilidade de técnicas de Visão Computacional no monitoramento e contagem de pessoas, utilizando ferramentas poderosas como YOLOv8 e OpenCV. Apesar dos desafios, como a variação nas condições de iluminação e a complexidade dos ambientes, o sistema mostrou-se robusto e eficiente.
+      </justify></p>
     <br>
     <h2><center>Referências</center></h2>
     <p><justify><center>

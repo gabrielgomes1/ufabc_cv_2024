@@ -113,43 +113,132 @@ th {
   <article> <!-- Texto central que indica a introdução do laboratório em questão-->
     <h2><center>Introdução</center></h2>
     <p><justify>
-      
+        O cálculo de profundidade a partir de duas imagens é uma técnica essencial na visão computacional, fundamental para a percepção tridimensional em sistemas de visão estereoscópica. O processo começa com a captura de duas imagens da mesma cena a partir de pontos de vista ligeiramente diferentes. A ideia central é similar à percepção de profundidade dos olhos humanos: a disparidade entre as imagens permite estimar a profundidade dos objetos na cena.
+        <br><br>
+        O primeiro passo para calcular a profundidade é a correspondência de pontos, que envolve identificar pontos correspondentes nas duas imagens. Para isso, é necessário extrair pontos de interesse usando algoritmos. Esses algoritmos detectam características distintas nas imagens e fornecem descritores que representam a aparência local de cada ponto.
+        <br><br>
+        Uma vez que os pontos de interesse e seus descritores são obtidos, é possível realizar a correspondência de pontos. Isso é feito comparando os descritores e encontrando os pares mais semelhantes. A correspondência precisa é crucial, pois permite medir a disparidade entre os pontos correspondentes nas duas imagens.
+        <br><br>
+        A profundidade dos pontos na cena é então estimada com base na disparidade. Para calcular a profundidade, é necessário conhecer a configuração das câmeras, que inclui a distância entre elas e suas orientações.
+        <br><br>
+        Além dos métodos tradicionais, técnicas avançadas, como mapas de disparidade e algoritmos baseados em aprendizado profundo, podem aprimorar a precisão e a eficiência da correspondência de pontos e do cálculo de profundidade. Esses avanços têm aplicações em diversas áreas, incluindo robótica, realidade aumentada e reconhecimento de objetos, ampliando significativamente as possibilidades tecnológicas no campo da visão computacional.
     </justify></p>
-
 
     <br>
-    <h2><center>Procedimentos experimentais</center></h2>
+    <h2><center>Parte 1 - Estudo Teórico</center></h2>
     <p><justify>
-        
-       
-
+        A percepção de profundidade em sistemas de visão computacional pode ser alcançada utilizando duas imagens capturadas de um mesmo cenário a partir de dois pontos de vista diferentes. Este método é baseado no princípio estereoscópico, que é similar ao processo visual humano. A diferença entre as duas imagens, chamada de disparidade, permite inferir a profundidade dos objetos na cena.
+        <br><br>
+        <b>Correspondência de Pontos</b><br>
+        Correspondência de Pontos é o processo de identificar e emparelhar pontos correspondentes em duas imagens que representam o mesmo ponto no mundo tridimensional. Esse processo é essencial para calcular a profundidade e envolve vários passos:
+        <ul>
+          <li><b>Captura das Imagens:</b> Captura de duas imagens estereoscópicas do mesmo cenário a partir de ângulos ligeiramente diferentes. As imagens devem ser adquiridas com câmeras calibradas para garantir que as distâncias e orientações sejam conhecidas.</li>
+          <li><b>Detecção de Pontos de Interesse:</b> Utiliza algoritmos para identificar pontos de interesse em ambas as imagens. Algoritmos comuns incluem SIFT (Scale-Invariant Feature Transform), SURF (Speeded-Up Robust Features) e ORB (Oriented FAST and Rotated BRIEF).</li>
+          <li><b>Descrição das Características:</b> Cada ponto detectado é descrito por um vetor que captura suas características locais. Descritores como SIFT e SURF fornecem vetores que representam a aparência do ponto, e ORB usa um conjunto de descritores binários.</li>
+          <li><b>Correspondência de Pontos:</b> Compara descritores de pontos em ambas as imagens e encontra os pares mais semelhantes. Técnicas como o algoritmo de vizinhos mais próximos (NN) e o método de correspondência de vizinhos mais próximos com verificação cruzada (NCC) são usados para identificar pares de pontos correspondentes.</li>
+        </ul>
+        <br><br>
+        <b>Estéreo Disparidade</b><br>
+        Estéreo Disparidade refere-se à diferença nas posições de pontos correspondentes em duas imagens estereoscópicas. A disparidade é crucial para calcular a profundidade e é calculada da seguinte forma:
+        <ul>
+          <li><b>Definição de Disparidade:</b> A disparidade é a diferença horizontal entre as coordenadas de um ponto correspondente nas duas imagens. A disparidade é inversamente proporcional à profundidade, isto é, quanto maior a disparidade, menor a profundidade.</li>
+          <li><b>Cálculo da Disparidade:</b> Identifica a posição correspondente de um ponto em uma imagem em relação à outra. Mapas de disparidade geram uma imagem em que a intensidade de cada pixel representa a disparidade.</li>
+        </ul>
+        <br><br>
+        <b>Estimativa de Profundidade</b><br>
+        Estimativa de Profundidade utiliza a disparidade para calcular a profundidade real dos pontos na cena. Este processo é realizado da seguinte forma:
+        <ul>
+          <li><b>Modelo de Câmera Estéreo:</b> Inclui parâmetros intrínsecos (distância focal e coordenadas do centro da imagem) e extrínsecos (posição e orientação das câmeras).</li>
+          <li><b>Fórmula para Profundidade:</b> A profundidade de um ponto pode ser calculada usando a fórmula: Z = (f * B) / d, onde f é a distância focal da câmera, B é a base estereoscópica (distância entre as câmeras) e d é a disparidade.</li>
+          <li><b>Processo de Cálculo:</b> Determinação da disparidade para cada ponto correspondente e aplicação da fórmula para calcular a profundidade com base na disparidade medida.</li>
+        </ul>
+        <br><br>
+        <b>Tecnologias Avançadas</b><br>
+        Além dos métodos básicos descritos, diversas tecnologias e técnicas avançadas podem melhorar a precisão e eficiência do cálculo de profundidade:
+        <ul>
+          <li><b>Mapas de Disparidade:</b> Representações gráficas da disparidade em uma imagem, onde cada pixel representa a diferença de posição do ponto correspondente nas duas imagens.</li>
+          <li><b>Métodos de Aprendizado Profundo:</b> Redes neurais e algoritmos de aprendizado profundo podem ser usados para melhorar a correspondência de pontos e a estimativa de profundidade, oferecendo maior precisão e robustez em condições desafiadoras.</li>
+        </ul>
     </justify></p>
     <br>
-    <h2><center>Análise e discussão dos estudos realizados</center></h2>
+    <h2><center>Parte 2 - Procedimento Experimental</center></h2>
     <p><justify>
-      
-
-
+        <div id="ladoalado">
+          <div style="display: flex; justify-content: space-around; margin-bottom: 10px;">
+              <img src="imagem_1.jpg" style="width: 20%; height: auto;">
+          </div>
+          <div style="display: flex; justify-content: space-around; margin-bottom: 10px;">
+              <img src="imagem_2.jpg" style="width: 20%; height: auto;">
+          </div>
+          <div style="display: flex; justify-content: space-around; margin-bottom: 10px;">
+              <img src="imagem_3.jpg" style="width: 20%; height: auto;">
+          </div>
+          <div style="display: flex; justify-content: space-around; margin-bottom: 10px;">
+              <img src="imagem_4.jpg" style="width: 20%; height: auto;">
+          </div>
+          <div style="display: flex; justify-content: space-around; margin-bottom: 10px;">
+              <img src="imagem_5.jpg" style="width: 20%; height: auto;">
+          </div>
+          <div style="display: flex; justify-content: space-around; margin-bottom: 10px;">
+              <img src="imagem_6.jpg" style="width: 20%; height: auto;">
+          </div>
+        </div>
+        <b>Calibração</b><br>
+        Ajuste dos parâmetros da câmera para garantir que as imagens capturadas sejam precisas e possam ser utilizadas para o cálculo de disparidade.
+        <br><br>
+        <b>Ajuste de Filtragem</b><br>
+        Definição dos filtros adequados para pré-processar as imagens, melhorando a qualidade da correspondência de pontos.
+        <br><br>
+        <b>Identificação de Objeto</b><br>
+        Identificação e marcação dos objetos nas imagens para a correspondência correta entre as duas perspectivas.
+        <br><br>
+        <b>Estimativa de Distância</b><br>
+        Cálculo da distância dos objetos com base na disparidade entre as duas imagens e nos parâmetros de calibração da câmera.
     </justify></p>
-    
+
+    <br>
+    <h2><center>Análise e Discussão</center></h2>
+    <p><justify>
+        Para os resultados finais, esperávamos obter uma estimativa de distância satisfatória para quaisquer objetos utilizados no experimento. No entanto, enfrentamos vários problemas durante a execução do teste, os quais contribuíram negativamente para o resultado final. Esses problemas incluem:
+        <br><br>
+        <b>Calibração das Câmeras:</b> O procedimento de calibração foi realizado várias vezes com o objetivo de obter o melhor resultado possível. No entanto, a calibração a partir de diferentes ângulos e o uso de imagens com pouca diferença resultaram em uma calibração insatisfatória, afetando o desempenho geral do experimento.
+        <br><br>
+        <b>Filtragem:</b> O ajuste dos parâmetros de filtragem das imagens capturadas em tempo real foi, sem dúvida, a parte mais desafiadora do processo. A busca por um nível satisfatório de filtragem envolveu muitos ajustes por meio de tentativa e erro, o que pode ter impactado significativamente o resultado final.
+        <br><br>
+        <b>Inserção de Distâncias:</b> Como a etapa de inserção de distâncias depende fortemente da etapa anterior, a dificuldade na identificação dos objetos, causada pela filtragem insatisfatória, prejudicou esta fase do experimento. Isso resultou em dificuldades adicionais ao fornecer distâncias específicas ao programa.
+        <br><br>
+        No final, a sucessão dos problemas anteriores afetou substancialmente o resultado desejado. O programa conseguiu identificar apenas um ou dois dos cinco objetos mostrados à câmera. Além disso, as estimativas de distância fornecidas para o único objeto identificado apresentaram variações significativas, com erros tanto para mais quanto para menos, e duas medidas muito diferentes para o mesmo ponto. Acreditamos que esses problemas decorrem da sequência de falhas anteriores. Após consultar outros grupos e compartilhar informações sobre o experimento, notamos que todos enfrentaram dificuldades semelhantes e aparentemente nenhum grupo obteve resultados satisfatórios na estimativa de distância.
+    </justify></p>
+
     <br>
     <h2><center>Conclusão</center></h2>
     <p><justify>
-      
-
+        A estimativa de distância utilizando visão computacional tem se mostrado uma ferramenta valiosa e um aliado fundamental na tecnologia moderna. Esta técnica permite extrair informações detalhadas a partir de imagens capturadas por duas câmeras simultaneamente ou de duas imagens conhecidas com precisão.
+        <br><br>
+        Os procedimentos, códigos e tutoriais disponíveis são amplos e facilitam tanto a implementação prática quanto a compreensão teórica dos diversos tópicos envolvidos. Eles descrevem detalhadamente os métodos e técnicas necessários para alcançar resultados precisos.
+        <br><br>
+        É essencial realizar cada etapa com cuidado e precisão, pois erros ou inconsistências podem comprometer as etapas subsequentes e levar a resultados muito distintos dos esperados. No entanto, quando todos os procedimentos e testes são executados corretamente e produzem resultados satisfatórios, a visão computacional pode se revelar uma ferramenta extremamente útil em diversos cenários do cotidiano.
     </justify></p>
-
     <br>
     <h2><center>Referências</center></h2>
-        <p><justify><center>
-              ANALYTICAL, C. N. S. Curso OpenCV Python - português. Disponível em: http://www.youtube.com/playlist?list=PLsyobOqUhkthjvmA_s7tTjb7V2EiwYYGC. Acesso em: 02 jul. 2024.
-          <br>MALLICK, S. Geometry of image formation. Disponível em: https://learnopencv.com/geometry-of-image-formation. Acesso em: 02 jul. 2024.
-          <br>OpenCV: Getting started with images. Disponível em: https://docs.opencv.org/4.x/db/deb/tutorial_display_image.html. Acesso em: 02 jul. 2024.
-          <br>OpenCV: Getting started with videos. Disponível em: https://docs.opencv.org/4.x/dd/d43/tutorial_py_video_display.html. Acesso em: 02 jul. 2024.
-          <br>OpenCV: OpenCV-Python Tutorials. Disponível em: https://docs.opencv.org/master/d6/d00/tutorial_py_root.html. Acesso em: 02 jul. 2024.
-          <br>SADEKAR, K. Camera calibration using OpenCV. Disponível em: https://learnopencv.com/camera-calibration-using-opencv. Acesso em: 02 jul. 2024.
-        </center></justify></p>
-
+    <p><justify><center>
+        Tutorial OpenCV e Python:
+        <a href="https://docs.opencv.org/master/d6/d00/tutorial_py_root.html" target="_blank">https://docs.opencv.org/master/d6/d00/tutorial_py_root.html</a>
+        <br>Getting Started with Images:
+        <a href="https://docs.opencv.org/4.x/db/deb/tutorial_display_image.html" target="_blank">https://docs.opencv.org/4.x/db/deb/tutorial_display_image.html</a>
+        <br>Getting Started with Videos:
+        <a href="https://docs.opencv.org/4.x/dd/d43/tutorial_py_video_display.html" target="_blank">https://docs.opencv.org/4.x/dd/d43/tutorial_py_video_display.html</a>
+        <br>Curso OpenCV Python - Português:
+        <a href="https://www.youtube.com/playlist?list=PLsyobOqUhkthjvmA_s7tTjb7V2EiwYYGC" target="_blank">https://www.youtube.com/playlist?list=PLsyobOqUhkthjvmA_s7tTjb7V2EiwYYGC</a>
+        <br>Geometria da formação de imagens:
+        <a href="https://learnopencv.com/geometry-of-image-formation" target="_blank">https://learnopencv.com/geometry-of-image-formation</a>
+        <br>Teoria da Calibração de Câmera com OpenCV:
+        <a href="https://learnopencv.com/camera-calibration-using-opencv" target="_blank">https://learnopencv.com/camera-calibration-using-opencv</a>
+        <br><br>
+        [1] Richard Hartley and Andrew Zisserman. 2003. Multiple View Geometry in Computer Vision (2nd. ed.). Cambridge University Press, USA.
+        <br>[2] D. Scharstein, H. Hirschmüller, Y. Kitajima, G. Krathwohl, N. Nesic, X. Wang, and P. Westling. High-resolution stereo datasets with subpixel-accurate ground truth. In German Conference on Pattern Recognition (GCPR 2014), Münster, Germany, September 2014.
+        <br>[3] H. Hirschmuller, “Stereo Processing by Semiglobal Matching and Mutual Information,” in IEEE Transactions on Pattern Analysis and Machine Intelligence, vol. 30, no. 2, pp. 328-341, Feb. 2008, doi: 10.1109/TPAMI.2007.1166.
+    </center></justify></p>
   </article>
 </section>
 
