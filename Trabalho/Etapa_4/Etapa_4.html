@@ -55,23 +55,22 @@ footer {
 }
 
 .code-box {
-            background-color: #f4f4f4;
-            border: 1px solid #ddd;
-            padding: 0;
-            border-radius: 5px;
-            font-family: monospace;
-            white-space: pre;
-            width: 800px; 
-            margin: 0 auto; 
-            overflow-x: auto; 
+  background-color: #f4f4f4;
+  border: 1px solid #ddd;
+  padding: 0;
+  border-radius: 5px;
+  font-family: monospace;
+  white-space: pre;
+  width: 800px; 
+  margin: 0 auto; 
+  overflow-x: auto; 
 }
 
 figcaption {
-    font-size: 14px;
-    color: #555;
-    margin-top: 5px;
+  font-size: 14px;
+  color: #555;
+  margin-top: 5px;
 }
-
 
 @media (max-width: 600px) {
   section {
@@ -90,42 +89,107 @@ figcaption {
     <br>Diego Aoyagi de Souza - RA: 11066516
     <br>Gabriel Gomes de Oliveira - RA: 11108214
     <br>Gustavo Cardoso Bezerra- RA: 11201822553</h5>
-    <h6>Data de publicação: 06/08/2024</h6>
+    <h6>Data de publicação: 09/08/2024</h6>
 </header>
 
 <section>  
-  <article> <!-- Texto central que indica a introdução do laboratório em questão-->
-    <h2><center>Introdução</center></h2>
-    <p><justify>
-        
-    </justify></p>
-
+  <article>
+    <h2 style="text-align: center;">Contexto da Etapa</h2>
+    <p style="text-align: justify;">
+      Para validação do trabalho realizado pela equipe, é necessário que pessoas, que não fizeram parte de qualquer desenvolvimento, realizem o uso e teste da ferramenta.
+      Com isso conseguimos opiniões externas ao grupo e análise da interface "homem-máquina", validando se as informações e objetivos do trabalho estão todos de acordo e expostos
+      da melhor forma.
+    </p>
+	  
+    <h3 style="text-align: center;">ROTEIRO EXPERIMENTAL</h3>
+    <br>
+    <h2 style="text-align: center;">Objetivo</h2>
+    <p style="text-align: justify;">
+      A ferramenta foi desenvolvida buscando fazer a contagem de pessoas em eventos realizados em locais fechados (sala de aula, palestra, reunião, sala de prova, etc.). Para isso utilizaremos uma ferramenta de contagem em conjunto com uma webcam posicionada em uma altura fixa onde a sua captura de imagem englobe todo o ambiente a ser aplicado.
+      Com isso alguns parâmetros e comandos podem ser ajustados através dos controles desenvolvidos para se obter um melhor funcionamento e uma resposta mais precisa, além de funcionalidades adicionais que podem ser habilitadas.
+    </p>
+    <br>
+    <h2 style="text-align: center;">Descritivos da Ferramenta</h2>
+    <p style="text-align: justify;">
+      A ferramenta de contagem de pessoas funciona baseada no reconhecimento das pessoas em uma certa quantidade de frames. Com isso, fazemos uma média com os valores de contagem obtidos nos frames visando ter uma precisão maior na resposta final.
+      Para termos uma confiabilidade dinâmica que possa ser ajustada para quaisquer um dos cenários destacados anteriormente, temos controles que nos permitem ajustar o índice de confiabilidade da ferramenta, o que representa a porcentagem de certeza que a ferramenta precisa ter para considerar que aquele reconhecimento obtido é de fato uma pessoa. Vale ressaltar que confiabilidade próxima de 100, indica que a ferramenta tem que ter 100% de certeza que o objeto reconhecido é realmente uma pessoa, onde na maioria dos casos não temos uma boa resposta.
+      O estudante também poderá escolher entre a classe 1 e a 67, para detectar pessoas e celulares respectivamente.
+    </p>
+    <br>
+    <h2 style="text-align: center;">Implementação e Execução</h2>
+     
+    <strong><em>1. Preparação do Ambiente (2 minutos):</em></strong>
+     <ul>
+      <li>O estudante deve abrir o IDE ou ambiente de desenvolvimento (ex: Visual Studio Code, Jupyter Notebook).</li>    
+      <li>É necessário verificar se as bibliotecas cv2, ultralytics, collections, e statistics estão instaladas e funcionando corretamente.</li>     
+      <li>O estudante deve garantir que a webcam do computador esteja ativa e funcionando.</li>
+    </ul>
+    <strong><em>2. Carregamento do Modelo YOLO (1 minuto):</em></strong>
+     <ul>
+      <li>O estudante deve localizar a linha no script onde o modelo YOLO é carregado (model = YOLO('yolov8n.pt')).</li> 
+   
+      <li>Este modelo pré-treinado será utilizado para detectar pessoas no vídeo capturado ao vivo pela webcam.</li> 
+    </ul>
+    <strong><em>3. Configuração da Captura de Vídeo e Taxa de FPS (2 minutos):</em></strong>
+     <ul>
+      <li>O estudante deve observar como o script inicializa a captura de vídeo da webcam com a linha (cap = cv2.VideoCapture(1)).</li> 
+   
+      <li>A importância de obter a taxa de FPS correta para garantir uma análise eficiente em tempo real deve ser destacada.</li> 
+    </ul>
+    <strong><em>4. Implementação da Lógica de Contagem de Pessoas (3 minutos):</em></strong>
+     <ul>
+      <li>O estudante deve analisar as partes do código responsáveis pela detecção de pessoas e contagem:</li> 
+   </ul>
+    <p style="text-indent: 60px; text-align: justify;">
+      As caixas delimitadoras (boxes), classes (clss) e confiabilidades (confs) são extraídas dos resultados da predição.
+    </p>
+    <p style="text-indent: 60px; text-align: justify;">
+      A condição if int(cls) == 0 and conf > 0.30: filtra as detecções, considerando apenas as pessoas com alta confiabilidade.
+    </p>
+     <ul>
+      <li>O estudante deve entender como o uso da moda na contagem dos últimos 15 frames melhora a precisão da contagem de pessoas.</li> 
+    </ul>
+    <strong><em>5. Inserção da Marca d'Água e Exibição dos Resultados (2 minutos):</em></strong>
+     <ul>
+      <li>O estudante deve verificar como a imagem da marca d'água é carregada, redimensionada e posicionada no vídeo.</li> 
+    
+      <li>O contador de pessoas deve ser exibido na tela, juntamente com as caixas delimitadoras e a marca d'água.</li> 
+    </ul>
+    <strong><em>6. Finalização e Salvamento do Vídeo (1 minuto):</em></strong>
+     <ul>
+      <li>O estudante deve executar o script para demonstrar o funcionamento do sistema de contagem de pessoas em tempo real.</li> 
+    
+      <li>Ao finalizar a captura de vídeo, o estudante deve observar como o vídeo processado é salvo no arquivo output.avi.</li> 
+   </ul>
+    <strong><em>7. Mudar a visualização da webcam para vídeos locais:</em></strong>
+     <ul>
+      <li>O estudante pode comentar a linha 54 e descomentar a linha 56 para utilizar a contagem de pessoas pela webcam.</li> 
+   
+      <li>O estudante pode comentar a linha 56 e descomentar a linha 54 para utilizar a contagem de pessoas por vídeos locais.</li> 
+    </ul>
 
     <br>
-    <h2><center>Visão Geral do Sistema</center></h2>
-      <p><justify>
-          
-      </justify></p>
-    <br>
-	  <h2><center>Diagramas Funcionais</center></h2>
-      <p><justify>
-        
-
-      </justify></p>
-    <br>
-    <h2><center>Considerações Finais</center></h2>
-      <p><justify>
-        
-
-      </justify></p
-    <br>
-    <h2><center>Referências</center></h2>
-    <p><justify><center>
-        Como a análise do tráfego e contagem de clientes pode aumentar a lucratividade da sua loja? Disponível em: <a href="https://intradata.ai/blocomo-a-analise-do-trafego-e-contagem-do-fluxo-de-clientes-pode-aumentar-a-lucratividade-da-sua-loja/" target="_blank">https://intradata.ai/blocomo-a-analise-do-trafego-e-contagem-do-fluxo-de-clientes-pode-aumentar-a-lucratividade-da-sua-loja/</a>. Acesso em: 5 jul. 2024.
-        <br>Contador de Fluxo - Venda. Disponível em: <a href="https://www.altervision.com.br/venda-contagem-de-visitas/?utm_source=google&utm_medium=cpc&utm_campaign=SD-conversoes-search-espec&gad_source=gclid=Cj0KCQjwv7O0BhDwARIsAC0sjWOi3yRCvG1b1hegy2vgyrD1AiKk_C-oFD0T-zlg_RUyt_-7h6PfyloaAsCsEALw_wcB" target="_blank">https://www.altervision.com.br/venda-contagem-de-visitas/?utm_source=google&utm_medium=cputm_campaign=SD-conversoes-search-espec&gad_source=1&gclid=Cj0KCQjwv7O0BhDwARIsAC0sjWOi3yRCvG1b1hegy2vgyrD1AiKk_C-oFD0T-zlg_RUyt_-7h6PfyloaAsCsEALw_wcB</a>. Acesso em: 5 jul. 2024.
-        <br>COUTO, R. Contador de pessoas: Ferramenta indispensável para o seu negócio. Disponível em: <a href="https://www.novvasolutions.com.br/blog/contador-de-pessoas/" target="_blank">https://www.novvasolutions.com.br/blocontador-de-pessoas/</a>. Acesso em: 5 jul. 2024.
-        <br>DIMENSIONAL. O que é e quais são os benefícios da contagem de fluxo em lojas físicas? Disponível em: <a href="https://blog.dimensional.com.br/contagem-de-fluxo-em-lojas-fisicas/" target="_blank">https://blog.dimensionacom.br/contagem-de-fluxo-em-lojas-fisicas/</a>. Acesso em: 5 jul. 2024.
-    </center></justify></p>
+    <h2 style="text-align: center;">Referências</h2>
+    <p style="text-align: justify;">
+      <center>
+        Detecção de Objetos com YOLO – Uma abordagem moderna. Disponível em: 
+        <a href="https://iaexpert.academy/2020/10/13/deteccao-de-objetos-com-yolo-uma-abordagem-moderna/" target="_blank">
+          https://iaexpert.academy/2020/10/13/deteccao-de-objetos-com-yolo-uma-abordagem-moderna/
+        </a>. Acesso em: 8 ago. 2024.
+        <br>Tutoriais abrangentes para Ultralytics YOLO. Disponível em: 
+        <a href="https://docs.ultralytics.com/pt/guides/#what-are-the-common-issues-faced-during-yolo-model-training-and-how-can-i-resolve-them" target="_blank">
+          https://docs.ultralytics.com/pt/guides/#what-are-the-common-issues-faced-during-yolo-model-training-and-how-can-i-resolve-them
+        </a>. Acesso em: 6 ago. 2024.
+        <br>COUTO, R. Contador de pessoas: Ferramenta indispensável para o seu negócio. Disponível em: 
+        <a href="https://www.novvasolutions.com.br/blog/contador-de-pessoas/" target="_blank">
+          https://www.novvasolutions.com.br/blog/contador-de-pessoas/
+        </a>. Acesso em: 5 jul. 2024.
+        <br>DIMENSIONAL. O que é e quais são os benefícios da contagem de fluxo em lojas físicas? Disponível em: 
+        <a href="https://blog.dimensional.com.br/contagem-de-fluxo-em-lojas-fisicas/" target="_blank">
+          https://blog.dimensional.com.br/contagem-de-fluxo-em-lojas-fisicas/
+        </a>. Acesso em: 5 jul. 2024.
+      </center>
+    </p>
 
   </article>
 </section>
@@ -136,3 +200,4 @@ figcaption {
 
 </body>
 </html>
+
